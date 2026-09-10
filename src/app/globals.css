@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* =========================
+   Base
+========================= */
+
+:root {
+  --background: #070708;
+  --foreground: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================
+   Selection
+========================= */
+
+::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: #ffffff;
+}
+
+/* =========================
+   Smooth animations
+========================= */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 10px) scale(1.05);
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   Animation classes
+========================= */
+
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.7s 100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.7s 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.7s 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 7s ease-in-out infinite;
+}
+
+.animate-card-in {
+  animation: card-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* =========================
+   Buttons & links
+========================= */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* =========================
+   Reduced motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================
+   Mobile improvements
+========================= */
+
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+}
